@@ -1,4 +1,4 @@
-Validação de chamada GET na rota https://cep-v2-americanas-npf.b2w.io/cep/ validando os resultados no response da chamada!
+Validação de chamada GET na rota https://cep-v2-americanas-npf.b2w.io/cep/ usando o CEP das capitais, validando os resultados no response da chamada!
 
 Verificado também cenário alternativo usando CEP inválido, conforme solicita a tarefa!
 
