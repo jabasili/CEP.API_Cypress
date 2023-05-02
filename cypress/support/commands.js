@@ -1,5 +1,6 @@
 import * as GETCepPos from '../fixtures/requests/GETCeps.positivo.request'
 import * as GETCepNeg from '../fixtures/requests/GETCep.negativo.request'
+import * as GETSemCepNeg from '../fixtures/requests/GETCeps.semCepInformado.request'
 
 Cypress.Commands.add('DadosGETRequestSP', () => {
     GETCepPos.Cep_SP().should((Response) =>{
@@ -469,5 +470,17 @@ Cypress.Commands.add('DadosGETRequestNeg', () => {
         expect(Response.body.info).equal('http://api.b2winc.com/doc/error/404')
         expect(Response.body.additionalInfo[0].key).equal('cause')
         expect(Response.body.additionalInfo[0].value).equal('CEP não encontrado')
+    })
+})
+
+Cypress.Commands.add('SemCEPInformado', () => {
+    GETSemCepNeg.SemCep().should((Response) =>{
+        expect(Response.status).to.eq(400)
+        expect(Response.value).to.be.not.null
+        expect(Response.body.errorCode).equal('400')
+        expect(Response.body.message).equal('Parâmetro CEP obrigatório')
+        expect(Response.body.info).equal('http://api.b2winc.com/doc/error/400')
+        expect(Response.body.additionalInfo[0].key).equal('cause')
+        expect(Response.body.additionalInfo[0].value).equal('')
     })
 })
